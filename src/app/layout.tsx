@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Roboto, Merriweather } from "next/font/google";
-import "./globals.css";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ReduxProvider } from "@/providers/ReduxProvider";
+import { I18Provider } from "@/providers/I18Provider";
+import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin", "cyrillic"],
@@ -18,6 +21,7 @@ const merriweather = Merriweather({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vercel.com/serj-2000s-projects/speak-text.vercel.app"),
   title: "Читач текстів та перекладач з озвученням",
   description: "Завантажуйте тексти, перекладайте їх на різні мови та слухайте правильну вимову слів онлайн.",
   keywords: ["текст онлайн", "переклад тексту", "озвучення слів", "читання книг", "мовні інструменти"],
@@ -55,9 +59,18 @@ export default function RootLayout({
     <html lang="uk">
       <body
         className={`${roboto.variable} ${merriweather.variable} antialiased`}
+        style={{
+          backgroundColor: `var(--background)`,
+          color: 'var(--text-color)'
+        }}
       >
-        {children}
-        <Footer />
+        <ReduxProvider>
+          <I18Provider>
+            <Header />
+            {children}
+            <Footer />
+          </I18Provider>
+        </ReduxProvider>
       </body>
     </html>
   );

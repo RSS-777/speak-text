@@ -1,15 +1,21 @@
-import Navbar from "./Navbar";
+"use client";
+import { Navbar } from "./Navbar";
+import { useTranslation } from "react-i18next";
 
-type TypeHeaderProps = {
-  title?: string;
-  subtitle?: string;
-}
-
-export const Header = ({ title, subtitle }: TypeHeaderProps) => {
+export const Header = () => {
+  const { t } = useTranslation();
   return (
     <header className="p-4">
       <Navbar />
-      <h1 className="text-xl font-bold">{title}<br /><span>{subtitle}</span></h1>
+      <h1 className="mx-auto mt-6 text-center sm:mx-0 sm:text-left max-w-lg text-2xl">
+        {t("header.title")}
+        <span
+          className="block text-base"
+          style={{ fontFamily: "var(--font-accent)", fontStyle: "italic" }}
+        >
+          {t("header.subtitle")}
+        </span>
+      </h1>
     </header>
-  )
+  );
 };
