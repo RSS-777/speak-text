@@ -2,5 +2,11 @@
   "header": {
     "title": "Czytaj, tłumacz, słuchaj",
     "subtitle": "Prześlij tekst, wybierz język i słuchaj poprawnej wymowy online"
+  },
+  "main" : {
+
+  },
+  "fetchMessage": {
+    "translateError": "Błąd serwera podczas tłumaczenia tekstu"
   }
 }

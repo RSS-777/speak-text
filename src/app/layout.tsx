@@ -19,16 +19,25 @@ const merriweather = Merriweather({
   variable: "--font-merriweather",
 });
 
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vercel.com/serj-2000s-projects/speak-text.vercel.app"),
+  metadataBase: new URL(
+    "https://vercel.com/serj-2000s-projects/speak-text.vercel.app"
+  ),
   title: "Читач текстів та перекладач з озвученням",
-  description: "Завантажуйте тексти, перекладайте їх на різні мови та слухайте правильну вимову слів онлайн.",
-  keywords: ["текст онлайн", "переклад тексту", "озвучення слів", "читання книг", "мовні інструменти"],
+  description:
+    "Завантажуйте тексти, перекладайте їх на різні мови та слухайте правильну вимову слів онлайн.",
+  keywords: [
+    "текст онлайн",
+    "переклад тексту",
+    "озвучення слів",
+    "читання книг",
+    "мовні інструменти",
+  ],
   authors: [{ name: "Riadysh Serhii", url: "https://github.com/RSS-777" }],
   openGraph: {
     title: "Читач текстів та перекладач з озвученням",
-    description: "Завантажуйте тексти, перекладайте їх та слухайте вимову слів онлайн.",
+    description:
+      "Завантажуйте тексти, перекладайте їх та слухайте вимову слів онлайн.",
     url: "https://github.com/RSS-777",
     siteName: "Speak-Text",
     images: [
@@ -45,7 +54,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Читач текстів та перекладач з озвученням",
-    description: "Завантажуйте тексти, перекладайте їх та слухайте вимову слів онлайн.",
+    description:
+      "Завантажуйте тексти, перекладайте їх та слухайте вимову слів онлайн.",
     images: ["/images/book.webp"],
   },
 };
@@ -58,17 +68,19 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <body
-        className={`${roboto.variable} ${merriweather.variable} antialiased`}
+        className={`${roboto.variable} ${merriweather.variable} antialiased min-h-screen`}
         style={{
           backgroundColor: `var(--background)`,
-          color: 'var(--text-color)'
+          color: "var(--text-color)",
         }}
       >
         <ReduxProvider>
           <I18Provider>
-            <Header />
-            {children}
-            <Footer />
+            <div className="flex flex-col min-h-screen max-w-[1440px] mx-auto px-2 pt-2">
+              <Header />
+              {children}
+              <Footer />
+            </div>
           </I18Provider>
         </ReduxProvider>
       </body>

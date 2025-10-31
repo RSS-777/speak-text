@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import en from '@/locales/en.json';
-import ua from '@/locales/ua.json';
+import uk from '@/locales/uk.json';
 import pl from '@/locales/pl.json';
 
 i18next
@@ -10,11 +10,11 @@ i18next
   .init({
     resources: {
       en: { common: en },
-      ua: { common: ua },
+      uk: { common: uk },
       pl: { common: pl },
     },
-    lng: 'ua',        
-    fallbackLng: 'ua',
+    lng: 'uk',        
+    fallbackLng: 'uk',
     ns: ['common'],
     defaultNS: 'common',
     interpolation: { escapeValue: false },

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\GIT\\speak-text\\src\\logs\\.af62bdc09da479f0226bfc3de38e8e5d04eb8027-audit.json",
+    "files": [
+        {
+            "date": 1761915110953,
+            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-10-31.log",
+            "hash": "031122858bb3eba7c7d2d91bea1f712fcf8477b97789ffaae312af6c7b6c25d9"
+        }
+    ],
+    "hashType": "sha256"
+}

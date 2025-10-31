@@ -8,11 +8,23 @@
 .light {
   --background: #ffffff;
   --text-color: #171717;
+  --btn-main-bg: #2563eb;
+  --btn-main-hover: #1d4ed8;
+  --btn-settings-bg: #10b981;
+  --btn-settings-hover: #059669;
+  --btn-text: #ffffff;
+  --btn-disabled-bg: #d1d5db;
 }
 
 .dark {
   --background: #0a0a0a;
   --text-color: #ededed;
+  --btn-main-bg: #3b82f6;
+  --btn-main-hover: #2563eb;
+  --btn-settings-bg: #34d399;
+  --btn-settings-hover: #10b981;
+  --btn-text: #ffffff;
+  --btn-disabled-bg: #4b5563;
 }
 
 body {
@@ -30,7 +42,7 @@ h1 {
 }
 
 h2 {
-    font-family: var(--font-accent);
+  font-family: var(--font-accent);
   font-style: italic;
   font-size: 1.875rem;
   line-height: 1.25;
