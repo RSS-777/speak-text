@@ -5,6 +5,12 @@
   --font-accent: var(----font-merriweather);
 }
 
+.file-text ::selection {
+  background-color: #EDE9FE;
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
 .light {
   --background: #ffffff;
   --text-color: #171717;
@@ -15,6 +21,7 @@
   --btn-settings-hover: #059669;
   --btn-text: #ffffff;
   --btn-disabled-bg: #d1d5db;
+  --btn-shadow: #000000;
 }
 
 .dark {

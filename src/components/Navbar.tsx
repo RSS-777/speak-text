@@ -36,7 +36,7 @@ export const Navbar = () => {
           className="bg-violet-900 text-center outline-none"
           value={i18n.language}
         >
-          <option value="uk">ua</option>
+          <option value="uk">uk</option>
           <option value="pl">pl</option>
           <option value="en">en</option>
         </select>
