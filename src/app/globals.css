@@ -8,6 +8,7 @@
 .light {
   --background: #ffffff;
   --text-color: #171717;
+  --subtitle: #4B5563;
   --btn-main-bg: #2563eb;
   --btn-main-hover: #1d4ed8;
   --btn-settings-bg: #10b981;
@@ -19,6 +20,7 @@
 .dark {
   --background: #0a0a0a;
   --text-color: #ededed;
+  --subtitle: #858c97;
   --btn-main-bg: #3b82f6;
   --btn-main-hover: #2563eb;
   --btn-settings-bg: #34d399;
@@ -37,7 +39,7 @@ body {
 
 h1 {
   font-size: 2.25rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
 }
 

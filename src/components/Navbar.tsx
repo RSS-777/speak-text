@@ -23,7 +23,7 @@ export const Navbar = () => {
   }, [theme]);
 
   return (
-    <nav className="flex justify-between">
+    <nav className="flex justify-between bg-gradient-to-r from-violet-950 to-violet-900 px-2 py-2 text-white">
       <span>SPEAK-TEXT</span>
       <div className="flex gap-2 items-center">
         <button onClick={handlerTheme} className="pointer">
@@ -33,6 +33,7 @@ export const Navbar = () => {
           name="lang"
           id="lang"
           onChange={(e) => handleLang(e.target.value)}
+          className="bg-violet-900 text-center outline-none"
           value={i18n.language}
         >
           <option value="uk">ua</option>

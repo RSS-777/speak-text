@@ -10,7 +10,6 @@ export default function Home() {
   const [translation, setTranslation] = useState<string>("");
   const [fetchMessage, setFetchMessage] = useState<string>("");
   const [detectedLang, setDetectedLang] = useState<string>("en");
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const { t, i18n } = useTranslation();
 
   /////////////////////////////////////////////////////////////////////
@@ -130,8 +129,8 @@ const uploadDocx = async (file: File): Promise<string> => {
   };
 
   return (
-    <main className="flex flex-col items-center gap-4 w-full flex-1">
-      <label className="px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700">
+    <main className="flex flex-col items-center gap-4 w-full flex-1 p-2">
+      <label className="cursor-pointer bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold py-3 px-6 mt-4 rounded-xl shadow-lg hover:opacity-90 transition">
         Завантажити текст
         <input
           type="file"
@@ -143,9 +142,9 @@ const uploadDocx = async (file: File): Promise<string> => {
       <div
         className="w-full p-2 border rounded-md flex flex-wrap"
         onMouseUp={handleSelection}
-        onTouchEnd={handleSelection}
+        // onTouchEnd={handleSelection}
       >
-       <button className="cursor-pointer">🔊 || 🛑</button>
+       <button className="cursor-pointer" onClick={handleSelection}>🔊</button>
         {fileText.length ? (
           fileText.split(/\s+/).map((word, idx) => (
             <span
@@ -154,14 +153,14 @@ const uploadDocx = async (file: File): Promise<string> => {
                 speakText(word, detectedLang);
                 handleTranslateText(word);
               }}
-              className="cursor-pointer hover:bg-yellow-200 hover:underline transition-all rounded px-1"
+              className="cursor-pointer hover:bg-violet-100 hover:underline hover:text-blue-700 transition-all rounded px-1"
             >
               {word}
             </span>
           ))
         ) : (
           <span className="text-gray-400 italic">
-            "Виберіть файл з розширенням .txt, .md або .csv, щоб переглянути
+            "Виберіть файл з розширенням .txt, .pdf, .docx, щоб переглянути
             його вміст тут"
           </span>
         )}
