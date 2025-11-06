@@ -8,21 +8,19 @@ import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700", "900"],
   variable: "--font-roboto",
 });
 
 const merriweather = Merriweather({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+  weight: ["400"],
+  style: ["italic"],
   variable: "--font-merriweather",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://vercel.com/serj-2000s-projects/speak-text.vercel.app"
-  ),
+  metadataBase: new URL("https://speak-text-alpha.vercel.app/"),
   title: "Читач текстів та перекладач з озвученням",
   description:
     "Завантажуйте тексти, перекладайте їх на різні мови та слухайте правильну вимову слів онлайн.",
@@ -67,6 +65,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
+      <head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+      </head>
       <body
         className={`${roboto.variable} ${merriweather.variable} antialiased min-h-screen`}
         style={{

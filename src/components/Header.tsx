@@ -3,7 +3,7 @@ import { Navbar } from "./Navbar";
 import { useTranslation } from "react-i18next";
 
 export const Header = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <header className="select-none">
       <Navbar />
@@ -11,7 +11,11 @@ export const Header = () => {
         {t("header.title")}
         <span
           className="block text-base pt-1 font-normal"
-          style={{ fontFamily: "var(--font-accent)", fontStyle: "italic", color: "var(--subtitle)"}}
+          style={{
+            fontFamily: "var(--font-accent)",
+            fontStyle: "italic",
+            color: "var(--subtitle)",
+          }}
         >
           {t("header.subtitle")}
         </span>

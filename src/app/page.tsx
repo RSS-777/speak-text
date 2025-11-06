@@ -12,7 +12,7 @@ import { uploadPDF } from "@/utils/files/uploadPDF";
 import { uploadDocx } from "@/utils/files/uploadDocx";
 import { paginateText } from "@/utils/paginateText";
 
-export default function Home() {
+export const Home = () => {
   const [translation, setTranslation] = useState<string>("");
   const [fetchMessage, setFetchMessage] = useState<string>("");
   const [detectedLang, setDetectedLang] = useState<string>("en");
@@ -51,26 +51,26 @@ export default function Home() {
           text = await uploadDocx(file);
           break;
         default:
-          throw new Error("Непідтримуваний тип файлу");
+          throw new Error(t("fetchMessage.unsupportedFile"));
       }
 
       const lang = detectLanguage(text);
       if (!["uk", "en", "pl"].includes(lang)) {
         setPages([]);
-        setFetchMessage(`Мова файлу (${lang}) не підтримується.`);
+        setFetchMessage(t("fetchMessage.unsupportedLang", { lang }));
         setTimeout(() => setFetchMessage(""), 4000);
         return;
       }
 
       setDetectedLang(lang);
       const chunkSize = isMobile ? 900 : 2000;
-      const paginated = paginateText({text, chunkSize});
+      const paginated = paginateText({ text, chunkSize });
       setPages(paginated);
       setCurrentPage(0);
     } catch (error: any) {
-      console.error("Помилка при завантаженні файлу:", error);
+      console.error(t("fetchMessage.fileLoadError"), error);
       setPages([]);
-      setFetchMessage(error.message || "Помилка при обробці файлу");
+      setFetchMessage(error.message || t("fetchMessage.fileProcessError"));
       setTimeout(() => setFetchMessage(""), 3000);
     } finally {
       setLoadingFile(false);
@@ -125,7 +125,7 @@ export default function Home() {
       <InstructionSection />
       <section className="flex flex-col items-center gap-4">
         <FileUploadButton
-          label="Завантажити текст"
+          label={t("home.uploadButton")}
           onChange={handleFileUpload}
         />
 
@@ -156,3 +156,5 @@ export default function Home() {
     </main>
   );
 };
+
+export default Home;

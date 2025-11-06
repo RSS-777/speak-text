@@ -1,12 +1,35 @@
 {
   "header": {
     "title": "Czytaj, tłumacz, słuchaj",
-    "subtitle": "Prześlij tekst, wybierz język i słuchaj poprawnej wymowy online"
-  },
-  "main" : {
-
+    "subtitle": "Prześlij tekst, wybierz język i posłuchaj poprawnej wymowy online"
   },
   "fetchMessage": {
-    "translateError": "Błąd serwera podczas tłumaczenia tekstu"
+    "translateError": "Błąd serwera podczas tłumaczenia tekstu",
+    "unsupportedFile": "Nieobsługiwany typ pliku",
+    "unsupportedLang": "Język pliku nie jest obsługiwany:",
+    "fileLoadError": "Błąd podczas ładowania pliku:",
+    "fileProcessError": "Błąd podczas przetwarzania pliku"
+  },
+  "home": {
+    "uploadButton": "Prześlij tekst"
+  },
+  "textBlock": {
+    "loading": "Ładowanie pliku...",
+    "noText": "Wybierz plik z rozszerzeniem .txt, .pdf lub .docx, aby wyświetlić jego zawartość tutaj.",
+    "button": {
+      "backBtn": "Poprzednia",
+      "nextBtn": "Następna"
+    }
+  },
+  "translationBlock": {
+    "loading": "Ładowanie tłumaczenia..."
+  },
+  "instruction": {
+    "clickAlt": "Kliknij słowo",
+    "clickText": "Kliknij słowo, aby przetłumaczyć i odsłuchać",
+    "highlightAlt": "Zaznaczanie tekstu",
+    "highlightText": "Zaznacz zdanie, aby przetłumaczyć i odsłuchać",
+    "languageAlt": "Wybór języka tłumaczenia",
+    "languageText": "Wybierz język do tłumaczenia i odsłuchu"
   }
 }

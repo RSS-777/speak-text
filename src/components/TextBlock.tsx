@@ -1,6 +1,8 @@
 import { memo, useState, useEffect } from "react";
 import { speakText } from "@/utils/speak";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
+import { ActionButton } from "./ActionButton";
+import { useTranslation } from "react-i18next";
 
 interface TextBlockProps {
   pages: string[][];
@@ -29,6 +31,7 @@ export const TextBlock = memo(
     const [selectedText, setSelectedText] = useState("");
     const [showButton, setShowButton] = useState(false);
     const [buttonPos, setButtonPos] = useState({ top: 0, left: 0 });
+    const { t } = useTranslation();
 
     const handleSelection = () => {
       const selection = window.getSelection();
@@ -92,7 +95,7 @@ export const TextBlock = memo(
     }, [currentPage]);
 
     return (
-      <div className="min-w-[60%] max-w-[900px] p-2 pb-1 border rounded-md">
+      <div className="relative min-w-[60%] max-w-[900px] p-2 pb-1 border rounded-md">
         <div
           className="relative file-text flex flex-wrap
                       [user-select:text] 
@@ -121,39 +124,21 @@ export const TextBlock = memo(
               }}
               className="flex gap-2 select-none bg-indigo-500/90 px-2 py-1 rounded shadow-lg transition"
             >
-              <button
+              <ActionButton
                 onClick={() => {
                   speakText(selectedText, detectedLang, setIsPlaying);
-                  setShowButton(false);
-                  window.getSelection()?.removeAllRanges();
                 }}
-                className="cursor-pointer"
               >
-                <span className=" text-[24px] leading-none">🔊</span>
-              </button>
-              <button
+                🔊
+              </ActionButton>
+              <ActionButton
                 onClick={() => {
                   handleTranslateText(selectedText);
-                  setShowButton(false);
-                  window.getSelection()?.removeAllRanges();
                 }}
-                className="cursor-pointer"
               >
-                <span className="text-[24px] leading-none">🌐</span>
-              </button>
+                🌐
+              </ActionButton>
             </div>
-          )}
-
-          {isPlaying && (
-            <button
-              onClick={() => {
-                window.speechSynthesis.cancel();
-                setIsPlaying(false);
-              }}
-              className="absolute top-1 right-1 active:scale-95 transition cursor-pointer"
-            >
-              <span className=" text-[24px] leading-none">🔇</span>
-            </button>
           )}
 
           {pages.length > 0 ? (
@@ -167,17 +152,33 @@ export const TextBlock = memo(
               </span>
             ))
           ) : loading && !fetchMessage ? (
-            <LoadingIndicator text="Завантаження файлу..." />
+            <LoadingIndicator text={t("textBlock.loading")} />
           ) : (
             <span
               className="italic select-none"
               style={{ color: "var(--subtitle)" }}
             >
-              Виберіть файл з розширенням .txt, .pdf, .docx, щоб переглянути
-              його вміст тут.
+              {t("textBlock.noText")}
             </span>
           )}
         </div>
+
+        {isPlaying && (
+          <div
+            tabIndex={-1}
+            onMouseDown={(e) => e.preventDefault()}
+            className="absolute top-2 right-2 active:scale-95 transition cursor-pointer"
+          >
+            <ActionButton
+              onClick={() => {
+                window.speechSynthesis.cancel();
+                setIsPlaying(false);
+              }}
+            >
+              🔇
+            </ActionButton>
+          </div>
+        )}
 
         {pages.length > 1 && (
           <div className="flex justify-center items-center w-full gap-2 select-none mt-2">
@@ -186,7 +187,7 @@ export const TextBlock = memo(
               disabled={currentPage === 0}
               className="select-none w-32 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
             >
-              ⬅ Попередня
+              ⬅ {t("textBlock.button.backBtn")}
             </button>
             <span className="select-none">
               {currentPage + 1} / {pages.length}
@@ -198,7 +199,7 @@ export const TextBlock = memo(
               disabled={currentPage === pages.length - 1}
               className="select-none w-32 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
             >
-              Наступна ➡
+              {t("textBlock.button.nextBtn")} ➡
             </button>
           </div>
         )}
