@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { InstructionSection } from "@/components/InstructionSection";
 import { FetchMessage } from "@/components/FetchMessage";
@@ -13,21 +13,23 @@ import { uploadDocx } from "@/utils/files/uploadDocx";
 import { paginateText } from "@/utils/paginateText";
 
 export const Home = () => {
+  const textBlockRef = useRef<HTMLDivElement>(null);
+  const [textBlockHeight, setTextBlockHeight] = useState<number>(0);
   const [translation, setTranslation] = useState<string>("");
   const [fetchMessage, setFetchMessage] = useState<string>("");
   const [detectedLang, setDetectedLang] = useState<string>("en");
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [loadingTranslate, setLoadingTranslate] = useState(false);
-  const [loadingFile, setLoadingFile] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [loadingTranslate, setLoadingTranslate] = useState<boolean>(false);
+  const [loadingFile, setLoadingFile] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
 
   const [pages, setPages] = useState<string[][]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const resetTranslationAndSpeech = () => {
+  const resetTranslationAndSpeech = useCallback(() => {
     setTranslation("");
-  };
+  }, []);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || !e.target.files[0]) return;
@@ -120,6 +122,34 @@ export const Home = () => {
     isMobileDevice();
   }, []);
 
+  useEffect(() => {
+    if (isMobile) return;
+
+    const el = textBlockRef.current;
+    if (!el) return;
+
+    let timeout: NodeJS.Timeout;
+
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const height = entry.contentRect.height + 13;
+
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          setTextBlockHeight((prev) =>
+            Math.abs(prev - height) > 1 ? height : prev
+          );
+        }, 100);
+      }
+    });
+
+    observer.observe(el);
+    return () => {
+      clearTimeout(timeout);
+      observer.disconnect();
+    };
+  }, [pages, currentPage, loadingFile]);
+
   return (
     <main className="flex flex-col items-center w-full flex-1 p-2">
       <InstructionSection />
@@ -131,6 +161,7 @@ export const Home = () => {
 
         <div className="flex flex-col justify-between gap-2 md:flex-row">
           <TextBlock
+            ref={textBlockRef}
             pages={pages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
@@ -146,7 +177,8 @@ export const Home = () => {
             <TranslationBlock
               loading={loadingTranslate}
               translation={translation}
-              onClick={() => resetTranslationAndSpeech()}
+              height={isMobile ? undefined : textBlockHeight}
+              onClick={resetTranslationAndSpeech}
             />
           )}
         </div>

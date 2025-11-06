@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from "react";
+import { memo, useState, useEffect, forwardRef } from "react";
 import { speakText } from "@/utils/speak";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { ActionButton } from "./ActionButton";
@@ -17,193 +17,201 @@ interface TextBlockProps {
 }
 
 export const TextBlock = memo(
-  ({
-    pages,
-    currentPage,
-    setCurrentPage,
-    detectedLang,
-    isPlaying,
-    setIsPlaying,
-    handleTranslateText,
-    loading,
-    fetchMessage,
-  }: TextBlockProps) => {
-    const [selectedText, setSelectedText] = useState("");
-    const [showButton, setShowButton] = useState(false);
-    const [buttonPos, setButtonPos] = useState({ top: 0, left: 0 });
-    const { t } = useTranslation();
+  forwardRef<HTMLDivElement, TextBlockProps>(
+    (
+      {
+        pages,
+        currentPage,
+        setCurrentPage,
+        detectedLang,
+        isPlaying,
+        setIsPlaying,
+        handleTranslateText,
+        loading,
+        fetchMessage,
+      },
+      ref
+    ) => {
+      const [selectedText, setSelectedText] = useState("");
+      const [showButton, setShowButton] = useState(false);
+      const [buttonPos, setButtonPos] = useState({ top: 0, left: 0 });
+      const { t } = useTranslation();
 
-    const handleSelection = () => {
-      const selection = window.getSelection();
+      const handleSelection = () => {
+        const selection = window.getSelection();
 
-      if (!selection) {
-        setShowButton(false);
+        if (!selection) {
+          setShowButton(false);
+          setSelectedText("");
+          return;
+        }
+
+        const anchorNode = selection.anchorNode;
+        const container = document.querySelector(".file-text");
+
+        if (!container || !anchorNode || !container.contains(anchorNode)) {
+          setShowButton(false);
+          setSelectedText("");
+          return;
+        }
+
+        const range = selection.getRangeAt(0);
+        const rects = range.getClientRects();
+
+        if (!rects || rects.length === 0) {
+          setShowButton(false);
+          setSelectedText("");
+          return;
+        }
+
+        const firstRect = rects[0];
+        const containerRect = container.getBoundingClientRect();
+
+        let top = firstRect.top - containerRect.top - 40;
+        let left = firstRect.left - containerRect.left;
+
+        const maxLeft = containerRect.width - 60;
+        if (left < 0) left = 0;
+        if (left > maxLeft) left = maxLeft;
+
+        const text = selection
+          .toString()
+          .replace(/\u00A0/g, " ")
+          .replace(/[\r\n]+/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+
+        setButtonPos({ top, left });
+        setShowButton(true);
+        setSelectedText(text);
+      };
+
+      useEffect(() => {
+        document.addEventListener("selectionchange", handleSelection);
+        return () =>
+          document.removeEventListener("selectionchange", handleSelection);
+      }, []);
+
+      useEffect(() => {
+        window.getSelection()?.removeAllRanges();
         setSelectedText("");
-        return;
-      }
-
-      const anchorNode = selection.anchorNode;
-      const container = document.querySelector(".file-text");
-
-      if (!container || !anchorNode || !container.contains(anchorNode)) {
         setShowButton(false);
-        setSelectedText("");
-        return;
-      }
+      }, [currentPage]);
 
-      const range = selection.getRangeAt(0);
-      const rects = range.getClientRects();
-
-      if (!rects || rects.length === 0) {
-        setShowButton(false);
-        setSelectedText("");
-        return;
-      }
-
-      const firstRect = rects[0];
-      const containerRect = container.getBoundingClientRect();
-
-      let top = firstRect.top - containerRect.top - 40;
-      let left = firstRect.left - containerRect.left;
-
-      const maxLeft = containerRect.width - 60;
-      if (left < 0) left = 0;
-      if (left > maxLeft) left = maxLeft;
-
-      const text = selection
-        .toString()
-        .replace(/\u00A0/g, " ")
-        .replace(/[\r\n]+/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-
-      setButtonPos({ top, left });
-      setShowButton(true);
-      setSelectedText(text);
-    };
-
-    useEffect(() => {
-      document.addEventListener("selectionchange", handleSelection);
-      return () =>
-        document.removeEventListener("selectionchange", handleSelection);
-    }, []);
-
-    useEffect(() => {
-      window.getSelection()?.removeAllRanges();
-      setSelectedText("");
-      setShowButton(false);
-    }, [currentPage]);
-
-    return (
-      <div className="relative min-w-[60%] max-w-[900px] p-2 pb-1 border rounded-md">
+      return (
         <div
-          className="relative file-text flex flex-wrap
+          ref={ref}
+          className="relative min-w-[60%] max-w-[900px] p-2 pb-1 border rounded-md self-start"
+        >
+          <div
+            className="relative file-text flex flex-wrap
                       [user-select:text] 
                       [-webkit-user-select:text] 
                       [-ms-user-select:text] 
                       [-webkit-touch-callout:none]"
-          onClick={(e) => {
-            const target = (e.target as HTMLElement).closest(
-              "[data-word]"
-            ) as HTMLElement | null;
-            const word = target?.dataset.word;
-            if (!word) return;
+            onClick={(e) => {
+              const target = (e.target as HTMLElement).closest(
+                "[data-word]"
+              ) as HTMLElement | null;
+              const word = target?.dataset.word;
+              if (!word) return;
 
-            speakText(word, detectedLang, setIsPlaying);
-            handleTranslateText(word);
-          }}
-          onContextMenu={(e) => e.preventDefault()}
-        >
-          {showButton && selectedText && (
+              speakText(word, detectedLang, setIsPlaying);
+              handleTranslateText(word);
+            }}
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            {showButton && selectedText && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: buttonPos.top,
+                  left: buttonPos.left,
+                  zIndex: 9999,
+                }}
+                className="flex gap-2 select-none bg-indigo-500/90 px-2 py-1 rounded shadow-lg transition"
+              >
+                <ActionButton
+                  onClick={() => {
+                    speakText(selectedText, detectedLang, setIsPlaying);
+                  }}
+                >
+                  🔊
+                </ActionButton>
+                <ActionButton
+                  onClick={() => {
+                    handleTranslateText(selectedText);
+                  }}
+                >
+                  🌐
+                </ActionButton>
+              </div>
+            )}
+
+            {pages.length > 0 ? (
+              pages[currentPage].map((word, idx) => (
+                <span
+                  key={idx}
+                  className="cursor-pointer hover:bg-violet-100 hover:underline hover:text-blue-700 transition-all rounded mr-1"
+                  data-word={word}
+                >
+                  {word}
+                </span>
+              ))
+            ) : loading && !fetchMessage ? (
+              <LoadingIndicator text={t("textBlock.loading")} />
+            ) : (
+              <span
+                className="italic select-none"
+                style={{ color: "var(--subtitle)" }}
+              >
+                {t("textBlock.noText")}
+              </span>
+            )}
+          </div>
+
+          {isPlaying && (
             <div
-              style={{
-                position: "absolute",
-                top: buttonPos.top,
-                left: buttonPos.left,
-                zIndex: 9999,
-              }}
-              className="flex gap-2 select-none bg-indigo-500/90 px-2 py-1 rounded shadow-lg transition"
+              tabIndex={-1}
+              onMouseDown={(e) => e.preventDefault()}
+              className="absolute top-2 right-2 active:scale-95 transition cursor-pointer"
             >
               <ActionButton
                 onClick={() => {
-                  speakText(selectedText, detectedLang, setIsPlaying);
+                  window.speechSynthesis.cancel();
+                  setIsPlaying(false);
                 }}
               >
-                🔊
-              </ActionButton>
-              <ActionButton
-                onClick={() => {
-                  handleTranslateText(selectedText);
-                }}
-              >
-                🌐
+                🔇
               </ActionButton>
             </div>
           )}
 
-          {pages.length > 0 ? (
-            pages[currentPage].map((word, idx) => (
-              <span
-                key={idx}
-                className="cursor-pointer hover:bg-violet-100 hover:underline hover:text-blue-700 transition-all rounded mr-1"
-                data-word={word}
+          {pages.length > 1 && (
+            <div className="flex justify-center items-center w-full gap-2 select-none mt-2">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
+                disabled={currentPage === 0}
+                className="select-none w-30 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
               >
-                {word}
+                ⬅ {t("textBlock.button.backBtn")}
+              </button>
+              <span className="select-none">
+                {currentPage + 1} / {pages.length}
               </span>
-            ))
-          ) : loading && !fetchMessage ? (
-            <LoadingIndicator text={t("textBlock.loading")} />
-          ) : (
-            <span
-              className="italic select-none"
-              style={{ color: "var(--subtitle)" }}
-            >
-              {t("textBlock.noText")}
-            </span>
+              <button
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(pages.length - 1, p + 1))
+                }
+                disabled={currentPage === pages.length - 1}
+                className="select-none w-30 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
+              >
+                {t("textBlock.button.nextBtn")} ➡
+              </button>
+            </div>
           )}
         </div>
-
-        {isPlaying && (
-          <div
-            tabIndex={-1}
-            onMouseDown={(e) => e.preventDefault()}
-            className="absolute top-2 right-2 active:scale-95 transition cursor-pointer"
-          >
-            <ActionButton
-              onClick={() => {
-                window.speechSynthesis.cancel();
-                setIsPlaying(false);
-              }}
-            >
-              🔇
-            </ActionButton>
-          </div>
-        )}
-
-        {pages.length > 1 && (
-          <div className="flex justify-center items-center w-full gap-2 select-none mt-2">
-            <button
-              onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
-              disabled={currentPage === 0}
-              className="select-none w-32 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
-            >
-              ⬅ {t("textBlock.button.backBtn")}
-            </button>
-            <span className="select-none">
-              {currentPage + 1} / {pages.length}
-            </span>
-            <button
-              onClick={() =>
-                setCurrentPage((p) => Math.min(pages.length - 1, p + 1))
-              }
-              disabled={currentPage === pages.length - 1}
-              className="select-none w-32 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
-            >
-              {t("textBlock.button.nextBtn")} ➡
-            </button>
-          </div>
-        )}
-      </div>
-    );
-  }
+      );
+    }
+  )
 );
