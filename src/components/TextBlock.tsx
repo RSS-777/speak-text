@@ -3,6 +3,7 @@ import { speakText } from "@/utils/speak";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { ActionButton } from "./ActionButton";
 import { useTranslation } from "react-i18next";
+import { PaginationButtons } from "@/components/PaginationButtons";
 
 interface TextBlockProps {
   pages: string[][];
@@ -129,7 +130,7 @@ export const TextBlock = memo(
                   left: buttonPos.left,
                   zIndex: 9999,
                 }}
-                className="flex gap-2 select-none bg-indigo-500/90 px-2 py-1 rounded shadow-lg transition"
+                className="flex gap-2 select-none bg-indigo-500/90 px-2 py-1 rounded shadow-[2px_2px_12px_-2px_rgba(128,128,128,0.7)] transition"
               >
                 <ActionButton
                   onClick={() => {
@@ -169,7 +170,6 @@ export const TextBlock = memo(
               </span>
             )}
           </div>
-
           {isPlaying && (
             <div
               tabIndex={-1}
@@ -186,29 +186,12 @@ export const TextBlock = memo(
               </ActionButton>
             </div>
           )}
-
           {pages.length > 1 && (
-            <div className="flex justify-center items-center w-full gap-2 select-none mt-2">
-              <button
-                onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
-                disabled={currentPage === 0}
-                className="select-none w-30 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
-              >
-                ⬅ {t("textBlock.button.backBtn")}
-              </button>
-              <span className="select-none">
-                {currentPage + 1} / {pages.length}
-              </span>
-              <button
-                onClick={() =>
-                  setCurrentPage((p) => Math.min(pages.length - 1, p + 1))
-                }
-                disabled={currentPage === pages.length - 1}
-                className="select-none w-30 cursor-pointer bg-indigo-500 text-white px-2 rounded shadow-lg hover:opacity-90 active:scale-95 transition"
-              >
-                {t("textBlock.button.nextBtn")} ➡
-              </button>
-            </div>
+            <PaginationButtons
+              pages={pages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           )}
         </div>
       );

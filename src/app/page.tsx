@@ -112,7 +112,9 @@ export const Home = () => {
       const isTouchDevice = window.matchMedia(
         "(hover: none) and (pointer: coarse)"
       ).matches;
-      return /android|iphone|ipad|ipod/i.test(ua) || isTouchDevice;
+      const isSmallWidth = window.innerWidth < 768;
+      
+      return /android|iphone|ipad|ipod/i.test(ua) || isTouchDevice || isSmallWidth;
     };
 
     setIsMobile(checkMobile());

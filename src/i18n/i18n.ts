@@ -5,16 +5,22 @@ import en from '@/locales/en.json';
 import uk from '@/locales/uk.json';
 import pl from '@/locales/pl.json';
 
+const resources = { en: { common: en }, uk: { common: uk }, pl: { common: pl } };
+
+const getUserLanguage = () => {
+  if (typeof navigator !== 'undefined') {
+    const browserLang = navigator.language.slice(0, 2);
+    if (Object.keys(resources).includes(browserLang)) return browserLang;
+  }
+  return 'en'; 
+};
+
 i18next
   .use(initReactI18next)
   .init({
-    resources: {
-      en: { common: en },
-      uk: { common: uk },
-      pl: { common: pl },
-    },
-    lng: 'uk',        
-    fallbackLng: 'uk',
+    resources,
+    lng: getUserLanguage(),        
+    fallbackLng: 'en',
     ns: ['common'],
     defaultNS: 'common',
     interpolation: { escapeValue: false },

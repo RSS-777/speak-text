@@ -17,7 +17,7 @@ export const TranslationBlock = memo(
     return (
       <div
         style={height ? { height: `${height}px` } : undefined}
-        className="select-none min-w-[35%] p-2 border rounded-md relative "
+        className="select-none min-w-[35%] p-2 border rounded-md relative"
       >
         {loading ? (
           <LoadingIndicator text={t("translationBlock.loading")} />

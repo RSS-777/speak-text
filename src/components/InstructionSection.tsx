@@ -1,8 +1,8 @@
 import { CardInstruction } from "./CardInstruction";
 import { useTranslation } from "react-i18next";
-import imgClick from "../assets/images/click.webp";
-import imgHighlight from "../assets/images/highlight.webp";
-import imgLanguage from "../assets/images/language.webp";
+import imgClick from "../assets/images/click.png";
+import imgHighlight from "../assets/images/highlight.png";
+import imgLanguage from "../assets/images/language.png";
 
 export const InstructionSection = () => {
   const { t } = useTranslation();
