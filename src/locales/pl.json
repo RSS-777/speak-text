@@ -31,5 +31,24 @@
     "highlightText": "Zaznacz zdanie, aby przetłumaczyć i odsłuchać",
     "languageAlt": "Wybór języka tłumaczenia",
     "languageText": "Wybierz język do tłumaczenia"
+  },
+  "metadata": {
+    "title": "Czytnik tekstów i tłumacz z głosem",
+    "description": "Wgrywaj teksty, tłumacz je na różne języki i słuchaj prawidłowej wymowy online.",
+    "keywords": [
+      "tekst online",
+      "tłumaczenie tekstu",
+      "wymowa słów",
+      "czytanie książek",
+      "narzędzia językowe"
+    ],
+    "openGraph": {
+      "title": "Czytnik tekstów i tłumacz z głosem",
+      "description": "Wgrywaj teksty, tłumacz je na różne języki, słuchaj prawidłowej wymowy i korzystaj z wygodnych narzędzi językowych."
+    },
+    "twitter": {
+      "title": "Czytnik tekstów i tłumacz z głosem",
+      "description": "Tłumacz teksty i słuchaj prawidłowej wymowy online."
+    }
   }
 }

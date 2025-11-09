@@ -17,7 +17,8 @@ export const Navbar = () => {
   };
 
   const handleLang = (value: string) => {
-    i18n.changeLanguage(value);
+    const path = window.location.pathname.split("/").slice(2).join("/");
+    window.location.href = `/${value}/${path}`;
   };
 
   useEffect(() => {

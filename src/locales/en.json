@@ -31,5 +31,24 @@
     "highlightText": "Highlight a sentence to translate and speak",
     "languageAlt": "Translation language selection",
     "languageText": "Choose a language for translation"
+  },
+  "metadata": {
+    "title": "Text Reader & Translator with Voice",
+    "description": "Upload texts, translate them into different languages, and listen to correct pronunciation online.",
+    "keywords": [
+      "online text",
+      "text translation",
+      "word pronunciation",
+      "book reading",
+      "language tools"
+    ],
+    "openGraph": {
+      "title": "Text Reader & Translator with Voice",
+      "description": "Upload texts, translate them into different languages, listen to correct pronunciation, and use convenient language tools."
+    },
+    "twitter": {
+      "title": "Text Reader & Translator with Voice",
+      "description": "Translate texts and listen to correct pronunciation online."
+    }
   }
 }
