@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const SUPPORTED_LANGS = ["uk", "en", "pl"];
 const DEFAULT_LANG = "uk";
 
-export function middleware(req: NextRequest) {
+const proxy = (req: NextRequest) => {
   const url = req.nextUrl.clone();
   const pathLang = url.pathname.split("/")[1];
 
@@ -11,13 +11,20 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const browserLang = req.headers.get("accept-language")?.slice(0, 2) || DEFAULT_LANG;
-  const lang = SUPPORTED_LANGS.includes(browserLang) ? browserLang : DEFAULT_LANG;
+  const browserLang =
+    req.headers.get("accept-language")?.slice(0, 2) || DEFAULT_LANG;
+  const lang = SUPPORTED_LANGS.includes(browserLang)
+    ? browserLang
+    : DEFAULT_LANG;
 
   url.pathname = `/${lang}${url.pathname}`;
   return NextResponse.redirect(url);
-}
+};
+
+export default proxy;
 
 export const config = {
-  matcher: ["/((?!_next|favicon.ico).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png).*)",
+  ],
 };

@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ReduxProvider } from "@/providers/ReduxProvider";
 import { I18Provider } from "@/providers/I18Provider";
-import "./globals.css";
+import "@/app/globals.css";
 
 const roboto = Roboto({
   subsets: ["latin", "cyrillic"],
@@ -23,21 +23,23 @@ const merriweather = Merriweather({
 export async function generateMetadata({
   params,
 }: {
-  params: { lang?: "uk" | "en" | "pl" };
+  params: Promise<{ lang: "uk" | "en" | "pl" }>;
 }): Promise<Metadata> {
-  const lang = params.lang || "uk";
-  return generateLocalizedMetadata(lang);
+  const { lang } = await params;
+  return generateLocalizedMetadata(lang || "uk");
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
+
   return (
-    <html lang={params.lang || "uk"}>
+    <html lang={lang || "uk"}>
       <head>
         <link
           rel="apple-touch-icon"
@@ -68,7 +70,7 @@ export default function RootLayout({
         }}
       >
         <ReduxProvider>
-          <I18Provider lang={params.lang || "uk"}>
+          <I18Provider lang={lang || "uk"}>
             <div className="flex flex-col min-h-screen max-w-[1440px] mx-auto">
               <Header />
               {children}

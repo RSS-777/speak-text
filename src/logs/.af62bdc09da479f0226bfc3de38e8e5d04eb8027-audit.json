@@ -44,6 +44,16 @@
             "date": 1762610045690,
             "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-08.log",
             "hash": "6fe88a43385340ff455c8656db514fe5cee97aef02672b412ed1de723b23fa33"
+        },
+        {
+            "date": 1762681276717,
+            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-09.log",
+            "hash": "cfedda14ee7c2a0347517c544a04daf88a32c75fbf6b337ec66d47e0f6b45d7a"
+        },
+        {
+            "date": 1762755797373,
+            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-10.log",
+            "hash": "94a7af28eb9ec56223404ffa52db97d400f446893a0b5ed7a46f7d2c62c204ee"
         }
     ],
     "hashType": "sha256"

@@ -106,22 +106,23 @@ export const Home = () => {
     }
   };
 
-  const isMobileDevice = () => {
-    const checkMobile = () => {
-      const ua = navigator.userAgent;
-      const isTouchDevice = window.matchMedia(
-        "(hover: none) and (pointer: coarse)"
-      ).matches;
-      const isSmallWidth = window.innerWidth < 768;
-      
-      return /android|iphone|ipad|ipod/i.test(ua) || isTouchDevice || isSmallWidth;
-    };
+  const checkMobile = () => {
+    const ua = navigator.userAgent;
+    const isTouchDevice = window.matchMedia(
+      "(hover: none) and (pointer: coarse)"
+    ).matches;
+    const isSmallWidth = window.innerWidth < 768;
 
-    setIsMobile(checkMobile());
+    setIsMobile(
+      /android|iphone|ipad|ipod/i.test(ua) || isTouchDevice || isSmallWidth
+    );
   };
 
   useEffect(() => {
-    isMobileDevice();
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
@@ -134,7 +135,7 @@ export const Home = () => {
 
     const observer = new ResizeObserver((entries) => {
       for (let entry of entries) {
-        const height = entry.contentRect.height + 13;
+        const height = entry.contentRect.height + 5;
 
         clearTimeout(timeout);
         timeout = setTimeout(() => {

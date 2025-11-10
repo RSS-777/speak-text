@@ -1,5 +1,5 @@
 "use client";
-import "@/i18n/i18n";
+import i18n from "@/i18n/i18n";
 
 export const I18Provider = ({
   children,
@@ -8,9 +8,7 @@ export const I18Provider = ({
   children: React.ReactNode;
   lang: string;
 }) => {
-  import("@/i18n/i18n").then(({ default: i18n }) => {
-    i18n.changeLanguage(lang);
-  });
+  i18n.changeLanguage(lang);
 
   return <>{children}</>;
 };
