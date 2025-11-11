@@ -2,7 +2,7 @@
 
 :root {
   --font-primary: var(--font-roboto);
-  --font-accent: var(----font-merriweather);
+  --font-accent: var(--font-merriweather);
 }
 
 .file-text ::selection {
