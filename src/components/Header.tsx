@@ -7,7 +7,10 @@ export const Header = () => {
   return (
     <header className="select-none">
       <Navbar />
-      <h1 className="mx-auto mt-6 text-center max-w-lg">
+      <h1
+        className="mx-auto mt-6 text-center max-w-lg"
+        style={{ color: "var(--title)" }}
+      >
         {t("header.title")}
         <span
           className="block text-base pt-1 font-normal"

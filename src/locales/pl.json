@@ -14,6 +14,7 @@
     "uploadButton": "Prześlij tekst"
   },
   "textBlock": {
+    "title": "Oryginał",
     "loading": "Ładowanie pliku...",
     "noText": "Wybierz plik z rozszerzeniem .txt, .pdf lub .docx, aby wyświetlić jego zawartość tutaj.",
     "button": {
@@ -22,6 +23,7 @@
     }
   },
   "translationBlock": {
+    "title": "Tłumaczenie",
     "loading": "Ładowanie tłumaczenia..."
   },
   "instruction": {
@@ -31,5 +33,34 @@
     "highlightText": "Zaznacz zdanie, aby przetłumaczyć i odsłuchać",
     "languageAlt": "Wybór języka tłumaczenia",
     "languageText": "Wybierz język do tłumaczenia"
+  },
+  "metadata": {
+    "title": "Czytnik tekstów i tłumacz z głosem",
+    "description": "Wgrywaj teksty, tłumacz je na różne języki i słuchaj prawidłowej wymowy online.",
+    "keywords": [
+      "tekst online",
+      "tłumaczenie tekstu",
+      "wymowa słów",
+      "czytanie książek",
+      "narzędzia językowe"
+    ],
+    "openGraph": {
+      "title": "Czytnik tekstów i tłumacz z głosem",
+      "description": "Wgrywaj teksty, tłumacz je na różne języki, słuchaj prawidłowej wymowy i korzystaj z wygodnych narzędzi językowych."
+    },
+    "twitter": {
+      "title": "Czytnik tekstów i tłumacz z głosem",
+      "description": "Tłumacz teksty i słuchaj prawidłowej wymowy online."
+    }
+  },
+  "globalNotFound": {
+    "metadata": {
+      "title": "404 – Strona Nie Znaleziona",
+      "description": "Niestety, strona, której szukasz, nie istnieje."
+    },
+    "title": "404",
+    "subtitle": "Strona Nie Znaleziona",
+    "text": "Możliwe, że wpisałeś niepoprawny adres lub ta strona została usunięta.",
+    "button": "🏠 Strona Główna"
   }
 }

@@ -10,7 +10,7 @@ import { LanguageSelect } from "./LanguageSelect";
 export const Navbar = () => {
   const theme: string = useSelector((state: RootState) => state.theme.value);
   const dispatch: AppDispatch = useDispatch();
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const handlerTheme = () => {
     dispatch(changeTheme());

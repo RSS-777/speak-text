@@ -14,6 +14,7 @@
     "uploadButton": "Upload Text"
   },
   "textBlock": {
+    "title": "Original",
     "loading": "Loading file...",
     "noText": "Select a file with the extension .txt, .pdf, or .docx to view its content here.",
     "button": {
@@ -22,6 +23,7 @@
     }
   },
   "translationBlock": {
+    "title": "Translation",
     "loading": "Translation loading..."
   },
   "instruction": {
@@ -31,5 +33,34 @@
     "highlightText": "Highlight a sentence to translate and speak",
     "languageAlt": "Translation language selection",
     "languageText": "Choose a language for translation"
+  },
+  "metadata": {
+    "title": "Text Reader & Translator with Voice",
+    "description": "Upload texts, translate them into different languages, and listen to correct pronunciation online.",
+    "keywords": [
+      "online text",
+      "text translation",
+      "word pronunciation",
+      "book reading",
+      "language tools"
+    ],
+    "openGraph": {
+      "title": "Text Reader & Translator with Voice",
+      "description": "Upload texts, translate them into different languages, listen to correct pronunciation, and use convenient language tools."
+    },
+    "twitter": {
+      "title": "Text Reader & Translator with Voice",
+      "description": "Translate texts and listen to correct pronunciation online."
+    }
+  },
+  "globalNotFound": {
+    "metadata": {
+      "title": "404 – Page Not Found",
+      "description": "Unfortunately, the page you are looking for does not exist."
+    },
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "text": "You may have entered an incorrect address or this page has been deleted.",
+    "button": "🏠 Home"
   }
 }

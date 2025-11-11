@@ -1,4 +1,5 @@
 import { memo, useState, useEffect, forwardRef } from "react";
+import { FileText } from "lucide-react";
 import { speakText } from "@/utils/speak";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { ActionButton } from "./ActionButton";
@@ -102,10 +103,16 @@ export const TextBlock = memo(
       return (
         <div
           ref={ref}
-          className="relative min-w-[60%] max-w-[900px] p-2 pb-1 border rounded-md self-start"
+          className="relative min-w-[320px] max-w-[900px] p-2 pt-0 pb-1 border border-gray-200 dark:border-gray-700 rounded-md self-start"
         >
+          {pages.length > 0 && (
+            <h2 className="flex items-center gap-2 mb-1 pb-1 pt-1 border-b border-gray-200 dark:border-gray-700 select-none">
+              <FileText className="w-5 h-5 text-indigo-500" />{" "}
+              {t("textBlock.title")}
+            </h2>
+          )}
           <div
-            className="relative file-text flex flex-wrap
+            className="relative file-text flex flex-wrap 
                       [user-select:text] 
                       [-webkit-user-select:text] 
                       [-ms-user-select:text] 
@@ -148,7 +155,6 @@ export const TextBlock = memo(
                 </ActionButton>
               </div>
             )}
-
             {pages.length > 0 ? (
               pages[currentPage].map((word, idx) => (
                 <span
@@ -160,7 +166,9 @@ export const TextBlock = memo(
                 </span>
               ))
             ) : loading && !fetchMessage ? (
-              <LoadingIndicator text={t("textBlock.loading")} />
+              <div className="text-center w-full">
+                <LoadingIndicator text={t("textBlock.loading")} />
+              </div>
             ) : (
               <span
                 className="italic select-none"
@@ -174,7 +182,7 @@ export const TextBlock = memo(
             <div
               tabIndex={-1}
               onMouseDown={(e) => e.preventDefault()}
-              className="absolute top-2 right-2 active:scale-95 transition cursor-pointer"
+              className="absolute top-1 right-1 active:scale-95 transition cursor-pointer"
             >
               <ActionButton
                 onClick={() => {

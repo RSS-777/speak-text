@@ -2,7 +2,7 @@
 
 :root {
   --font-primary: var(--font-roboto);
-  --font-accent: var(----font-merriweather);
+  --font-accent: var(--font-merriweather);
 }
 
 .file-text ::selection {
@@ -14,26 +14,15 @@
 .light {
   --background: #ffffff;
   --text-color: #171717;
+  --title: #4B0082;
   --subtitle: #4B5563;
-  --btn-main-bg: #2563eb;
-  --btn-main-hover: #1d4ed8;
-  --btn-settings-bg: #10b981;
-  --btn-settings-hover: #059669;
-  --btn-text: #ffffff;
-  --btn-disabled-bg: #d1d5db;
-  --btn-shadow: #000000;
 }
 
 .dark {
   --background: #0a0a0a;
   --text-color: #ededed;
+  --title: #D8BFD8;
   --subtitle: #858c97;
-  --btn-main-bg: #3b82f6;
-  --btn-main-hover: #2563eb;
-  --btn-settings-bg: #34d399;
-  --btn-settings-hover: #10b981;
-  --btn-text: #ffffff;
-  --btn-disabled-bg: #4b5563;
 }
 
 body {
@@ -51,9 +40,9 @@ h1 {
 }
 
 h2 {
-  font-size: 1.875rem;
-  font-weight: 400;
-  line-height: 1.25;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 p {

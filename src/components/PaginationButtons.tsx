@@ -20,7 +20,7 @@ export const PaginationButtons = ({
         className="w-28 flex items-center justify-center gap-1 cursor-pointer bg-indigo-500 text-white px-1 rounded shadow-[2px_2px_12px_-2px_rgba(128,128,128,0.7)] hover:opacity-90 active:scale-95 transition"
       >
         <span className="text-2xl leading-none h-[28px]">‹ </span>
-        <span  className="text-sm">{t("textBlock.button.backBtn")}</span>
+        <span className="text-sm">{t("textBlock.button.backBtn")}</span>
       </button>
       <span className="whitespace-nowrap">
         {currentPage + 1} / {pages.length}
