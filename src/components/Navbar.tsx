@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   return (
     <nav className="flex justify-between bg-gradient-to-r from-violet-950 to-violet-900 px-2 py-2 text-white">
-      <span>SPEAK-TEXT</span>
+      <span className="font-serif">SPEAK-TEXT</span>
       <div className="flex gap-2 items-center">
         <ActionButton onClick={handlerTheme} className="!text-lg h-full flex">
           {theme === "light" ? "☾" : "☀︎"}

@@ -53,6 +53,13 @@
       "description": "Translate texts and listen to correct pronunciation online."
     }
   },
+  "footer": {
+    "copyright": "© {{year}} All rights reserved.",
+    "contact": "Contact",
+    "email": "serj.777.front@gmail.com",
+    "projects": "Projects",
+    "github": "GitHub"
+  },
   "globalNotFound": {
     "metadata": {
       "title": "404 – Page Not Found",
