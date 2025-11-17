@@ -53,6 +53,13 @@
       "description": "Tłumacz teksty i słuchaj prawidłowej wymowy online."
     }
   },
+  "footer": {
+    "copyright": "© {{year}} Wszelkie prawa zastrzeżone.",
+    "contact": "Kontakt",
+    "email": "serj.777.front@gmail.com",
+    "projects": "Projekty",
+    "github": "GitHub"
+  },
   "globalNotFound": {
     "metadata": {
       "title": "404 – Strona Nie Znaleziona",

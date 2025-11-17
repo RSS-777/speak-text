@@ -53,6 +53,13 @@
       "description": "Перекладайте тексти та слухайте правильну вимову слів онлайн."
     }
   },
+  "footer": {
+    "copyright": "© {{year}} Всі права захищені.",
+    "contact": "Контакт",
+    "email": "serj.777.front@gmail.com",
+    "projects": "Проекти",
+    "github": "GitHub"
+  },
   "globalNotFound": {
     "metadata": {
       "title": "404 – Сторінку не знайдено",
