@@ -159,7 +159,7 @@ export const TextBlock = memo(
               pages[currentPage].map((word, idx) => (
                 <span
                   key={idx}
-                  className="cursor-pointer hover:bg-violet-100 hover:underline hover:text-blue-700 transition-all rounded mr-1"
+                  className="word-highlight cursor-pointer transition-all rounded mr-1"
                   data-word={word}
                 >
                   {word}

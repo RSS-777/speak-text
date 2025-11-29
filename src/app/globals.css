@@ -5,7 +5,25 @@
   --font-accent: var(--font-merriweather);
 }
 
-.file-text ::selection {
+.light .word-highlight:hover {
+  background-color: #401385;
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.dark .word-highlight:hover {
+  background-color: #EDE9FE;
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.light .file-text ::selection {
+  background-color: #401385;
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.dark .file-text ::selection {
   background-color: #EDE9FE;
   color: #1d4ed8;
   text-decoration: underline;
@@ -13,7 +31,7 @@
 
 .light {
   --background-header: white;
-  --background: linear-gradient(to bottom, #ffffff00 70%,  #dd6eff8f);
+  --background: linear-gradient(to bottom, #ffffff00 50%, #dd6eff8f);
   --text-color: black;
   --title: #4B0082;
   --subtitle: #4B5563;
@@ -21,7 +39,7 @@
 
 .dark {
   --background-header: black;
-  --background: linear-gradient(to bottom, #000000 70%, #210047);
+  --background: linear-gradient(to bottom, #000000 50%, #210047);
   --text-color: #ededed;
   --title: #D8BFD8;
   --subtitle: #858c97;
