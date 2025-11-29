@@ -12,14 +12,16 @@
 }
 
 .light {
-  --background: #ffffff;
-  --text-color: #171717;
+  --background-header: white;
+  --background: linear-gradient(to bottom, #ffffff00 70%,  #dd6eff8f);
+  --text-color: black;
   --title: #4B0082;
   --subtitle: #4B5563;
 }
 
 .dark {
-  --background: #0a0a0a;
+  --background-header: black;
+  --background: linear-gradient(to bottom, #000000 70%, #210047);
   --text-color: #ededed;
   --title: #D8BFD8;
   --subtitle: #858c97;

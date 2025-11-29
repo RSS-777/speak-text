@@ -88,8 +88,7 @@ export const Home = () => {
     setFetchMessage("");
     try {
       const res = await fetch(
-        `/api/translate?word=${encodeURIComponent(word)}&to=${
-          i18n.language
+        `/api/translate?word=${encodeURIComponent(word)}&to=${i18n.language
         }&from=${detectedLang}`
       );
       const data = await res.json();
@@ -154,7 +153,13 @@ export const Home = () => {
   }, [pages, currentPage, loadingFile]);
 
   return (
-    <main className="flex flex-col items-center w-full flex-1 p-2">
+    <main
+      className="flex flex-col items-center w-full flex-1 p-2"
+      style={{
+        background: `var(--background)`,
+        color: "var(--text-color)",
+      }}
+    >
       <InstructionSection />
       <section className="flex flex-col items-center gap-4">
         <FileUploadButton

@@ -6,39 +6,14 @@
     "auditLog": "C:\\GIT\\speak-text\\src\\logs\\.af62bdc09da479f0226bfc3de38e8e5d04eb8027-audit.json",
     "files": [
         {
-            "date": 1762237331743,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-04.log",
-            "hash": "e723afd3bd5ce12bf5e051a53ed651f43b0e2a4da34e59dc376c96672acd3acf"
-        },
-        {
-            "date": 1762334790227,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-05.log",
-            "hash": "e4b18fa22bd1f57da13d8c01b59b1c7d481f8be5b5394c5dd72286ac854170a4"
-        },
-        {
-            "date": 1762412794411,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-06.log",
-            "hash": "8cde6504dca4a9a3b27a9cf7448f1dbe5f0b9b4bd9a7f489a94ea14d36fcaaa2"
-        },
-        {
-            "date": 1762610045690,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-08.log",
-            "hash": "6fe88a43385340ff455c8656db514fe5cee97aef02672b412ed1de723b23fa33"
-        },
-        {
-            "date": 1762681276717,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-09.log",
-            "hash": "cfedda14ee7c2a0347517c544a04daf88a32c75fbf6b337ec66d47e0f6b45d7a"
-        },
-        {
-            "date": 1762755797373,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-10.log",
-            "hash": "94a7af28eb9ec56223404ffa52db97d400f446893a0b5ed7a46f7d2c62c204ee"
-        },
-        {
             "date": 1763405259562,
             "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-17.log",
             "hash": "151671b6b97f7672b80fa4dc2e4425b5989979eff93ee757749b89de191e0437"
+        },
+        {
+            "date": 1764420693052,
+            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-29.log",
+            "hash": "9545186df3b1b158dcaadab4514e8f38c51298163d31b6ad25cd81a3d11522d5"
         }
     ],
     "hashType": "sha256"

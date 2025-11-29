@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export const Header = () => {
   const { t } = useTranslation();
   return (
-    <header className="select-none">
+    <header className="select-none" style={{ color: "var(--title)", background: "var(--background-header)" }}>
       <Navbar />
       <h1
         className="mx-auto mt-6 text-center max-w-lg"

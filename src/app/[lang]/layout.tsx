@@ -64,14 +64,10 @@ export default async function RootLayout({
       </head>
       <body
         className={`${roboto.variable} ${merriweather.variable} antialiased min-h-screen`}
-        style={{
-          backgroundColor: `var(--background)`,
-          color: "var(--text-color)",
-        }}
       >
         <ReduxProvider>
           <I18Provider lang={lang || "uk"}>
-            <div className="flex flex-col min-h-screen max-w-[1440px] mx-auto">
+            <div className="flex flex-col min-h-screen w-full max-w-[1440px] mx-auto">
               <Header />
               {children}
               <Footer />
