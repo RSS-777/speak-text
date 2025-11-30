@@ -1,3 +1,5 @@
+import { SUPPORTED_LANGUAGES } from "@/config/supportedLanguages";
+
 interface ILanguageProps {
   value: string;
   onChange: (value: string) => void;
@@ -12,9 +14,11 @@ export const LanguageSelect = ({ value, onChange }: ILanguageProps) => {
       onChange={(e) => onChange(e.target.value)}
       className="cursor-pointer bg-violet-900 text-center outline-none text-lg"
     >
-      <option value="uk">uk</option>
-      <option value="pl">pl</option>
-      <option value="en">en</option>
+      {SUPPORTED_LANGUAGES.map((lang) => (
+        <option key={lang} value={lang}>
+          {lang}
+        </option>
+      ))}
     </select>
   );
 };

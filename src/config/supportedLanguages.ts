@@ -1,0 +1,1 @@
+export const SUPPORTED_LANGUAGES: string[] = ["uk", "en", "pl"];

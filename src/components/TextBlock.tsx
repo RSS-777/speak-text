@@ -5,6 +5,8 @@ import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { ActionButton } from "./ActionButton";
 import { useTranslation } from "react-i18next";
 import { PaginationButtons } from "@/components/PaginationButtons";
+import { SUPPORTED_FILE_FORMATS } from "@/config/fileFormats";
+import { SUPPORTED_LANGUAGES } from "@/config/supportedLanguages";
 
 interface TextBlockProps {
   pages: string[][];
@@ -112,7 +114,7 @@ export const TextBlock = memo(
             </h2>
           )}
           <div
-            className="relative file-text flex flex-wrap 
+            className="relative file-text flex flex-wrap
                       [user-select:text] 
                       [-webkit-user-select:text] 
                       [-ms-user-select:text] 
@@ -170,12 +172,13 @@ export const TextBlock = memo(
                 <LoadingIndicator text={t("textBlock.loading")} />
               </div>
             ) : (
-              <span
+              <p
                 className="italic select-none"
-                style={{ color: "var(--subtitle)" }}
-              >
-                {t("textBlock.noText")}
-              </span>
+                style={{ color: "var(--subtitle)" }}>
+                <span>{t("textBlock.supportedFormats", { formats: SUPPORTED_FILE_FORMATS.join(', ') })}</span>
+                <br />
+                <span>{t("textBlock.supportedLanguages", { languages: SUPPORTED_LANGUAGES.join(', ') })}</span>
+              </p>
             )}
           </div>
           {isPlaying && (

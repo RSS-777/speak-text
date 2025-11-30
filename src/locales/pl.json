@@ -6,7 +6,7 @@
   "fetchMessage": {
     "translateError": "Błąd serwera podczas tłumaczenia tekstu",
     "unsupportedFile": "Nieobsługiwany typ pliku",
-    "unsupportedLang": "Język pliku nie jest obsługiwany:",
+    "unsupportedLang": "Język pliku nie jest obsługiwany: {{lang}}",
     "fileLoadError": "Błąd podczas ładowania pliku:",
     "fileProcessError": "Błąd podczas przetwarzania pliku"
   },
@@ -16,7 +16,8 @@
   "textBlock": {
     "title": "Oryginał",
     "loading": "Ładowanie pliku...",
-    "noText": "Wybierz plik z rozszerzeniem .txt, .pdf lub .docx, aby wyświetlić jego zawartość tutaj.",
+    "supportedFormats": "Wybierz plik z rozszerzeniem {{formats}} aby wyświetlić jego zawartość tutaj.",
+    "supportedLanguages": "Wybierz jeden z obsługiwanych języków: {{languages}}.",
     "button": {
       "backBtn": "Poprzednia",
       "nextBtn": "Następna"

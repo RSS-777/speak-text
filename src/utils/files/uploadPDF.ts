@@ -15,3 +15,4 @@ export const uploadPDF = async (file: File): Promise<string> => {
 
   return text.trim();
 };
+

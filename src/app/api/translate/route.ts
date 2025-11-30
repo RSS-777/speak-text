@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import translate from "translate";
 import logger from "@/lib/logger";
+import { SUPPORTED_LANGUAGES } from "@/config/supportedLanguages";
 
 translate.engine = "google";
 
@@ -9,6 +10,13 @@ export async function GET(request: Request) {
   const word = searchParams.get("word") || "";
   const to = searchParams.get("to") || "en";
   const from = searchParams.get("from") || "uk";
+
+  if (!SUPPORTED_LANGUAGES.includes(from) || !SUPPORTED_LANGUAGES.includes(to)) {
+    return NextResponse.json(
+      { error: `Unsupported language: from='${from}', to='${to}'` },
+      { status: 400 }
+    );
+  }
 
   try {
     const translated = await translate(word, { from, to });

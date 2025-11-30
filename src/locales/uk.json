@@ -6,7 +6,7 @@
   "fetchMessage": {
     "translateError": "Помилка сервера при перекладі тексту",
     "unsupportedFile": "Непідтримуваний тип файлу",
-    "unsupportedLang": "Мова файлу не підтримується:",
+    "unsupportedLang": "Мова файлу не підтримується: {{lang}}",
     "fileLoadError": "Помилка при завантаженні файлу:",
     "fileProcessError": "Помилка при обробці файлу"
   },
@@ -16,7 +16,8 @@
   "textBlock": {
     "title": "Оригінал",
     "loading": "Завантаження файлу...",
-    "noText": "Виберіть файл з розширенням .txt, .pdf, .docx, щоб переглянути його вміст тут.",
+    "supportedFormats": "Виберіть файл з розширенням {{formats}} щоб переглянути його вміст тут.",
+    "supportedLanguages": "Оберіть одну з підтримуваних мов: {{languages}}.",
     "button": {
       "backBtn": "Попередня",
       "nextBtn": "Наступна"

@@ -6,7 +6,7 @@
   "fetchMessage": {
     "translateError": "Server error while translating the text",
     "unsupportedFile": "Unsupported file type",
-    "unsupportedLang": "File language is not supported:",
+    "unsupportedLang": "File language is not supported: {{lang}}",
     "fileLoadError": "Error loading file:",
     "fileProcessError": "Error processing file"
   },
@@ -16,7 +16,8 @@
   "textBlock": {
     "title": "Original",
     "loading": "Loading file...",
-    "noText": "Select a file with the extension .txt, .pdf, or .docx to view its content here.",
+    "supportedFormats": "Select a file with the extension {{formats}} to view its content here.",
+    "supportedLanguages": "Select one of the supported languages: {{languages}}.",
     "button": {
       "backBtn": "Previous",
       "nextBtn": "Next"

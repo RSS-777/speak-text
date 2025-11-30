@@ -10,7 +10,17 @@ import { detectLanguage } from "@/utils/language";
 import { uploadText } from "@/utils/files/uploadText";
 import { uploadPDF } from "@/utils/files/uploadPDF";
 import { uploadDocx } from "@/utils/files/uploadDocx";
+import { uploadEPUB } from "@/utils/files/uploadEpub";
 import { paginateText } from "@/utils/paginateText";
+import { SUPPORTED_LANGUAGES } from "@/config/supportedLanguages";
+import { SUPPORTED_FILE_FORMATS } from "@/config/fileFormats";
+
+export const uploadHandlers: Record<string, (file: File) => Promise<string>> = {
+  txt: uploadText,
+  pdf: uploadPDF,
+  docx: uploadDocx,
+  epub: uploadEPUB,
+};
 
 export const Home = () => {
   const textBlockRef = useRef<HTMLDivElement>(null);
@@ -33,6 +43,7 @@ export const Home = () => {
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || !e.target.files[0]) return;
+    
     resetTranslationAndSpeech();
     setLoadingFile(true);
     const file = e.target.files[0];
@@ -40,27 +51,17 @@ export const Home = () => {
     if (!ext) return;
 
     try {
-      let text = "";
+      const handler = uploadHandlers[ext]
+      if (!handler) throw new Error(t("fetchMessage.unsupportedFile"))
 
-      switch (ext) {
-        case "txt":
-          text = await uploadText(file);
-          break;
-        case "pdf":
-          text = await uploadPDF(file);
-          break;
-        case "docx":
-          text = await uploadDocx(file);
-          break;
-        default:
-          throw new Error(t("fetchMessage.unsupportedFile"));
-      }
-
+      const text = await handler(file);
       const lang = detectLanguage(text);
-      if (!["uk", "en", "pl"].includes(lang)) {
+
+      if (!SUPPORTED_LANGUAGES.includes(lang)) {
         setPages([]);
         setFetchMessage(t("fetchMessage.unsupportedLang", { lang }));
-        setTimeout(() => setFetchMessage(""), 4000);
+        e.target.value = "";
+        setTimeout(() => setFetchMessage(""), 2000);
         return;
       }
 
@@ -165,6 +166,7 @@ export const Home = () => {
         <FileUploadButton
           label={t("home.uploadButton")}
           onChange={handleFileUpload}
+          accept={SUPPORTED_FILE_FORMATS.join(',')}
         />
 
         <div className="flex flex-col justify-between gap-2 md:flex-row">
