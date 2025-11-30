@@ -17,7 +17,7 @@
     "title": "Oryginał",
     "loading": "Ładowanie pliku...",
     "supportedFormats": "Wybierz plik z rozszerzeniem {{formats}} aby wyświetlić jego zawartość tutaj.",
-    "supportedLanguages": "Wybierz jeden z obsługiwanych języków: {{languages}}.",
+    "supportedLanguages": "Obsługiwane języki plików: {{languages}}.",
     "button": {
       "backBtn": "Poprzednia",
       "nextBtn": "Następna"

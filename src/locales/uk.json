@@ -17,7 +17,7 @@
     "title": "Оригінал",
     "loading": "Завантаження файлу...",
     "supportedFormats": "Виберіть файл з розширенням {{formats}} щоб переглянути його вміст тут.",
-    "supportedLanguages": "Оберіть одну з підтримуваних мов: {{languages}}.",
+    "supportedLanguages": "Підтримувані мови файлів: {{languages}}.",
     "button": {
       "backBtn": "Попередня",
       "nextBtn": "Наступна"

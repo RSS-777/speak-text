@@ -17,7 +17,7 @@
     "title": "Original",
     "loading": "Loading file...",
     "supportedFormats": "Select a file with the extension {{formats}} to view its content here.",
-    "supportedLanguages": "Select one of the supported languages: {{languages}}.",
+    "supportedLanguages": "Supported file languages: {{languages}}.",
     "button": {
       "backBtn": "Previous",
       "nextBtn": "Next"
