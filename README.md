@@ -12,7 +12,7 @@ Try the web application here:
 ## 🛠 Features
 - 🔹 **Theme Switching** – light and dark mode.  
 - 🔹 **Interface Language Switching** – the text will be automatically translated to the chosen interface language.  
-- 🔹 **File Upload** – supports `.txt`, `.docx`, and PDF files.  
+- 🔹 **File Upload** – supports `.txt`, `.docx`, `.epub`, and PDF files.  
 - 🔹 **Interactive Word Translation & Speech** – click on a word to hear its correct pronunciation **and** see its translation.  
 - 🔹 **Sentence Translation or Speech** – highlight a sentence and choose whether to play speech or translate it.  
 
