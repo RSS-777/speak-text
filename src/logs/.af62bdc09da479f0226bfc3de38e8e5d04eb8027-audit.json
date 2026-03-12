@@ -6,19 +6,9 @@
     "auditLog": "C:\\GIT\\speak-text\\src\\logs\\.af62bdc09da479f0226bfc3de38e8e5d04eb8027-audit.json",
     "files": [
         {
-            "date": 1763405259562,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-17.log",
-            "hash": "151671b6b97f7672b80fa4dc2e4425b5989979eff93ee757749b89de191e0437"
-        },
-        {
-            "date": 1764420693052,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-29.log",
-            "hash": "9545186df3b1b158dcaadab4514e8f38c51298163d31b6ad25cd81a3d11522d5"
-        },
-        {
-            "date": 1764520896113,
-            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2025-11-30.log",
-            "hash": "46008f8f8753c7e78cd017ec168f08be2c81a4c96d9cc9e36355c3ad33167ce7"
+            "date": 1773341024855,
+            "name": "C:\\GIT\\speak-text\\src\\logs\\error-2026-03-12.log",
+            "hash": "5452183e390f1889ad22ab586b8d6cb1178fdaa89888910ef65ab972bcc4fac9"
         }
     ],
     "hashType": "sha256"

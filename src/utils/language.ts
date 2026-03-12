@@ -7,8 +7,10 @@ const LANGUAGE_MAP: Record<string, string> = {
 };
 
 export const detectLanguage = (text: string): string => {
-  if (!text || text.trim().length === 0) return "en";
-  const sample = text.split(/\s+/).slice(0, 15).join(" ");
-  const code3 = franc(sample);
-  return LANGUAGE_MAP[code3] || code3;
+  if (!text || text.trim().length < 30) return "en";
+
+  const sample = text.slice(0, 200);
+  const code3 = franc(sample, { minLength: 20 });
+
+  return LANGUAGE_MAP[code3] || "en";
 };

@@ -34,13 +34,12 @@ export const TextBlock = memo(
         loading,
         fetchMessage,
       },
-      ref
+      ref,
     ) => {
       const [selectedText, setSelectedText] = useState("");
       const [showButton, setShowButton] = useState(false);
       const [buttonPos, setButtonPos] = useState({ top: 0, left: 0 });
       const { t } = useTranslation();
-      const demoText = 'Hello my sun'
 
       const handleSelection = () => {
         const selection = window.getSelection();
@@ -122,7 +121,7 @@ export const TextBlock = memo(
                       [-webkit-touch-callout:none]"
             onClick={(e) => {
               const target = (e.target as HTMLElement).closest(
-                "[data-word]"
+                "[data-word]",
               ) as HTMLElement | null;
               const word = target?.dataset.word;
               if (!word) return;
@@ -173,14 +172,21 @@ export const TextBlock = memo(
                 <LoadingIndicator text={t("textBlock.loading")} />
               </div>
             ) : (
-            demoText.length
-              ?  <p>{demoText}</p>
-              : <p
+              <p
                 className="italic select-none"
-                style={{ color: "var(--subtitle)" }}>
-                <span>{t("textBlock.supportedFormats", { formats: SUPPORTED_FILE_FORMATS.join(', ') })}</span>
+                style={{ color: "var(--subtitle)" }}
+              >
+                <span>
+                  {t("textBlock.supportedFormats", {
+                    formats: SUPPORTED_FILE_FORMATS.join(", "),
+                  })}
+                </span>
                 <br />
-                <span>{t("textBlock.supportedLanguages", { languages: SUPPORTED_LANGUAGES.join(', ') })}</span>
+                <span>
+                  {t("textBlock.supportedLanguages", {
+                    languages: SUPPORTED_LANGUAGES.join(", "),
+                  })}
+                </span>
               </p>
             )}
           </div>
@@ -209,6 +215,6 @@ export const TextBlock = memo(
           )}
         </div>
       );
-    }
-  )
+    },
+  ),
 );
