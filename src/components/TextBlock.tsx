@@ -40,6 +40,7 @@ export const TextBlock = memo(
       const [showButton, setShowButton] = useState(false);
       const [buttonPos, setButtonPos] = useState({ top: 0, left: 0 });
       const { t } = useTranslation();
+      const demoText = 'Hello my sun'
 
       const handleSelection = () => {
         const selection = window.getSelection();
@@ -172,7 +173,9 @@ export const TextBlock = memo(
                 <LoadingIndicator text={t("textBlock.loading")} />
               </div>
             ) : (
-              <p
+            demoText.length
+              ?  <p>{demoText}</p>
+              : <p
                 className="italic select-none"
                 style={{ color: "var(--subtitle)" }}>
                 <span>{t("textBlock.supportedFormats", { formats: SUPPORTED_FILE_FORMATS.join(', ') })}</span>
